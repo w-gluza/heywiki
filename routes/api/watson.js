@@ -33,8 +33,28 @@ router.get("/session", async (req, res) => {
 });
 
 // Handle messages
+// POST api/watson/message
+router.post("/message", async (req,res)=>{
 
+  // Construct payload
+  payload = {
+    assistantId: process.env.WATSON_ASSISTANT_ID,
+    sessionId: req.headers.session_id,
+    input: {
+      message_type: "text",
+      text: req.body.input,
+    },
+  };
 
+  try {
+    const message = await assistant.message(payload);
+    res.json(message["result"]);
+
+  } catch (err) {
+    res.send("There was an error processing your request");
+    console.log(err);
+  }
+})
 
 
 
