@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+// Import dependencies
+import React from 'react';
+import "./App.css";
 
-function App() {
+// Import redux components
+// import { Provider } from 'react-redux';
+// import {store} from "./store";
+
+// console.log('store', store);
+// Import chat component
+
+// Connect application with Redux
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // <Provider store={store}>
+      <>Hey Wiki!</>
+    // </Provider>
   );
-}
+};
 
 export default App;

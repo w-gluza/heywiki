@@ -1,0 +1,10 @@
+1. Setup redux - manage the app state
+2. Setup reducers and actions
+3. Setup chat 
+4. Setup queue
+5. Display messages
+6. Get and handle session_ids
+7. Handle sending user msg to API
+8. Adding bot responses to the queue
+9. CSS for formatting
+
