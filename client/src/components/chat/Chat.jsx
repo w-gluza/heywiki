@@ -1,35 +1,36 @@
 import React, { useState } from "react";
-import { userMessage } from "../../actions/watson";
 import { connect } from "react-redux";
 
-const Chat = ({ chat, userMessage }) => {
-  // Handle user msg
+//  Import action
+import { userMessage, sendMessage } from "../../actions/watson";
+
+const Chat = ({ chat, userMessage, sendMessage }) => {
+  //  Handle user message
   const [message, setMessage] = useState("");
 
-  // Handle user submission
+  //  Handle user submission
   const handleClick = async (e) => {
     // key code of "enter" button which is 13
     const code = e.keyCode || e.which;
 
     if (code === 13) {
-      console.log("msg", message);
       userMessage(message);
-      // Clear message after "enter" pressed
+      sendMessage(message);
+
+      // clear message after being send
       setMessage("");
     }
   };
 
   return (
     <div className="chat">
-      <p> Initial chat</p>
-      <div>Msg goes here</div>
-      {chat.length === 0
-        ? ""
-        : chat.map((msg) => 
-        <div className={msg.type}>{msg.message}</div>
-        )}
+      <h1>Chatty the Chatbot</h1>
+      <div>
+        {chat.length === 0 ? "" : chat.map((msg) => <div>{msg.message}</div>)}
+      </div>
+
       <input
-        id="chatbot"
+        id="chatBox"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
         onKeyPress={handleClick}
@@ -37,9 +38,8 @@ const Chat = ({ chat, userMessage }) => {
     </div>
   );
 };
-
 const mapStateToProps = (state) => ({
   chat: state.watson.messages,
 });
 
-export default connect(mapStateToProps, { userMessage })(Chat);
+export default connect(mapStateToProps, { userMessage, sendMessage })(Chat);
