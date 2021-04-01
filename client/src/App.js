@@ -26,10 +26,9 @@ useEffect(() => {
   }
 });
   return (
-      <>
-      Hey Wiki!
+      <div className="container">
       <Chat/>
-      </>
+      </div>
   );
 };
 

@@ -23,18 +23,21 @@ const Chat = ({ chat, userMessage, sendMessage }) => {
   };
 
   return (
-    <div className="chat">
-      <h1>Chatty the Chatbot</h1>
-      <div>
-        {chat.length === 0 ? "" : chat.map((msg) => <div>{msg.message}</div>)}
+    <div className="chatWrapper">
+      <div className="chat">
+        <p className="chatHeading">Some title</p>
+        <div className="conversationHistory">
+          {chat.length === 0
+            ? ""
+            : chat.map((msg) => <div className={msg.type}>{msg.message}</div>)}
+        </div>
+        <input
+          id="chatBox"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyPress={handleClick}
+        />
       </div>
-
-      <input
-        id="chatBox"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        onKeyPress={handleClick}
-      />
     </div>
   );
 };
