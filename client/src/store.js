@@ -1,21 +1,23 @@
-import { createStore } from 'redux'
-import reducer from './reducers/index'
+// Import dependencies
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import combineReducers from "./reducers";
 
-const store = createStore(reducer)
-console.log(store.getState())
-// {
-//   counter: 0,
-//   todos: []
-// }
+// Connect the application to Redux Devtools
+import { composeWithDevTools } from "redux-devtools-extension";
 
-store.dispatch({
-  type: 'ADD_TODO',
-  text: 'Use Redux'
-})
-console.log(store.getState())
-// {
-//   counter: 0,
-//   todos: [ 'Use Redux' ]
-// }
+// Setup initial state
+const initialState = {};
 
+// Import middleware
+const middleware = [thunk];
+
+// Setup store
+const store = createStore(
+  combineReducers,
+  initialState,
+  composeWithDevTools(applyMiddleware(...middleware))
+);
+
+// Export store
 export default store;
