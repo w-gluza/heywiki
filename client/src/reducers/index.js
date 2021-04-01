@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import todos from './todos'
-import counter from './counter'
+// Import dependencies
+import { combineReducers } from "redux";
 
-export default combineReducers({
-  todos,
-  counter
-})
+// Import reducers
+import watson from "./watson";
+
+// Export combined reducers
+export default combineReducers({ watson });
